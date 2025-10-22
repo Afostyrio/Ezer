@@ -1,9 +1,16 @@
-location: Oaxtepec, Morelos
-date: Domingo 21 de septiembre de 2025
-title
-person:
-+ title: 
-+ name: 
-+ role: 
-+ image: 
-moment
+# location: Oaxtepec, Morelos
+# date: Domingo 21 de septiembre de 2025
+# title
+# person:
+# + title: Maestra de ceremonias
+# + name: M. Isabel de Montserrat Avila Olivo
+# + role: Delegada de Aguascalientes
+# + image: inputs/img/Isabel.png
+# moment:
+# + name: Bienvenida
+# + image: inputs/img/portada.jpg
+# individual:
+# + level: II
+# + medal: Plata
+team:
++ level: II
