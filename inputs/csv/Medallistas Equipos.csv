@@ -1,11 +1,11 @@
-Estado,Medalla,Nivel
-Coahuila,Oro,I
-Zacatecas,Plata,I
-Guanajuato,Bronce,I
-Jalisco,Oro,II
-Sinaloa,Plata,II
-Chiapas,Bronce,II
-Ciudad de México,Bronce,II
-Chiapas,Oro,III
-Coahuila,Plata,III
-Zacatecas,Bronce,III
+CLAVE,Estado,Medalla,Nivel
+COA,Coahuila,Oro,I
+ZAC,Zacatecas,Plata,I
+GTO,Guanajuato,Bronce,I
+JAL,Jalisco,Oro,II
+SIN,Sinaloa,Plata,II
+CHS,Chiapas,Bronce,II
+CMX,Ciudad de México,Bronce,II
+CHS,Chiapas,Oro,III
+COA,Coahuila,Plata,III
+ZAC,Zacatecas,Bronce,III

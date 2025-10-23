@@ -9,8 +9,8 @@
 # moment:
 # + name: Bienvenida
 # + image: inputs/img/portada.jpg
-# individual:
-# + level: II
-# + medal: Plata
+individual:
++ level: II
++ medal: Plata
 team:
 + level: II

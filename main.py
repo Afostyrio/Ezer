@@ -41,19 +41,19 @@ def add_person_slide(i: int):
 
 	# Argument seeker
 	while instructions[i][0] == "+":
-		title_match = re.compile("\+ title: (.*)")
+		title_match = re.compile(r"\+ title: (.*)")
 		title_get = title_match.match(instructions[i])
 		if title_get: title = title_get.group(1)
 
-		name_match = re.compile("\+ name: (.*)")
+		name_match = re.compile(r"\+ name: (.*)")
 		name_get = name_match.match(instructions[i])
 		if name_get: name = name_get.group(1)
 
-		image_match = re.compile("\+ image: (.*)")
+		image_match = re.compile(r"\+ image: (.*)")
 		image_get = image_match.match(instructions[i])
 		if image_get: image = image_get.group(1)
 		
-		role_match = re.compile("\+ role: (.*)")
+		role_match = re.compile(r"\+ role: (.*)")
 		role_get = role_match.match(instructions[i])
 		if role_get: role = role_get.group(1)
 		
@@ -75,11 +75,11 @@ def add_moment_slide(i: int):
 
 	# Argument seeker
 	while instructions[i][0] == "+":
-		name_match = re.compile("\+ name: (.*)")
+		name_match = re.compile(r"\+ name: (.*)")
 		name_get = name_match.match(instructions[i])
 		if name_get: name = name_get.group(1)
 
-		# image_match = re.compile("\+ image: (.*)")
+		# image_match = re.compile(r"\+ image: (.*)")
 		# image_get = image_match.match(instructions[i])
 		# if image_get: image = image_get.group(1)
 		
@@ -95,11 +95,11 @@ def add_individual_medals(i: int):
 
 	# Argument seeker
 	while instructions[i][0] == "+":
-		level_match = re.compile("\+ level: (.*)")
+		level_match = re.compile(r"\+ level: (.*)")
 		level_get = level_match.match(instructions[i])
 		if level_get: level = level_get.group(1)
 
-		medal_match = re.compile("\+ medal: (.*)")
+		medal_match = re.compile(r"\+ medal: (.*)")
 		medal_get = medal_match.match(instructions[i])
 		if medal_get: medal = medal_get.group(1)
 
@@ -123,6 +123,7 @@ def add_individual_medals(i: int):
 				p.text = f"{block[k,3].upper()} ({block[k,0].upper()})"
 				if j==k:
 					p.font.bold = True
+					picture_placeholder = medal_slide.placeholders[1].insert_picture(f"inputs/img/Individual/{block[k,2]}.png")
 
 
 def add_team_medals(i: int):
@@ -131,7 +132,7 @@ def add_team_medals(i: int):
 
 	# Argument seeker
 	while instructions[i][0] == "+":
-		level_match = re.compile("\+ level: (.*)")
+		level_match = re.compile(r"\+ level: (.*)")
 		level_get = level_match.match(instructions[i])
 		if level_get: level = level_get.group(1)
 
@@ -148,19 +149,22 @@ def add_team_medals(i: int):
 	for team in medallistas_bronce:
 		slide = prs.slides.add_slide(prs.slide_layouts[8])
 		slide.placeholders[0].text = "TERCER LUGAR"
-		slide.placeholders[2].text = team[0]
+		slide.placeholders[1].insert_picture(f"inputs/img/Teams/{team[0]}.png")
+		slide.placeholders[2].text = team[1]
 
 	medallistas_plata = medallistas_equipos[(medallistas_equipos["Nivel"]==level) & (medallistas_equipos["Medalla"] == "Plata")].values
 	for team in medallistas_plata:
 		slide = prs.slides.add_slide(prs.slide_layouts[8])
 		slide.placeholders[0].text = "SEGUNDO LUGAR"
-		slide.placeholders[2].text = team[0]
+		slide.placeholders[1].insert_picture(f"inputs/img/Teams/{team[0]}.png")
+		slide.placeholders[2].text = team[1]
 
 	medallistas_oro = medallistas_equipos[(medallistas_equipos["Nivel"]==level) & (medallistas_equipos["Medalla"] == "Oro")].values
 	for team in medallistas_oro:
 		slide = prs.slides.add_slide(prs.slide_layouts[8])
 		slide.placeholders[0].text = "PRIMER LUGAR"
-		slide.placeholders[2].text = team[0]
+		slide.placeholders[1].insert_picture(f"inputs/img/Teams/{team[0]}.png")
+		slide.placeholders[2].text = team[1]
 		
 
 # Main DSL parsing loop
