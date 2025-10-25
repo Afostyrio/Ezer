@@ -9,7 +9,7 @@ import numpy
 if os.path.isdir("outputs/Presentación.pptx"):
 	os.remove("outputs/Presentación.pptx")
 
-prs = Presentation()
+prs = Presentation("inputs/Plantilla.pptx")
 
 with open("config", 'r') as instruction_file:
 	instructions = instruction_file.readlines()
