@@ -9,6 +9,7 @@
 # moment:
 # + name: Bienvenida
 # + image: inputs/img/portada.jpg
+parade
 individual:
 + level: II
 + medal: Plata

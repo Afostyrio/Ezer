@@ -15,6 +15,7 @@ with open("config", 'r') as instruction_file:
 	instructions = instruction_file.readlines()
 n_instructions = len(instructions)
 
+concursantes = pd.read_csv("inputs/csv/Concursantes.csv")
 medallistas_individual = pd.read_csv("inputs/csv/Medallistas Individual.csv", header=0)
 medallistas_equipos = pd.read_csv("inputs/csv/Medallistas Equipos.csv", header=0)
 N_PRESIDIUM = 7
@@ -89,6 +90,24 @@ def add_moment_slide(i: int):
 	if name: slide.placeholders[0].text = name
 	# if image: slide.placeholders[1].insert_picture(image)
 
+def add_parade():
+	slide = prs.slides.add_slide(prs.slide_layouts[2])
+	slide.placeholders[0].text = "DESFILE DE DELEGACIONES"
+	estados_presentes = sorted(concursantes["Estado"].unique())
+	for estado in estados_presentes:
+		state_slide = prs.slides.add_slide(prs.slide_layouts[1])
+		state_slide.placeholders[0].text = estado
+
+		tf = state_slide.placeholders[1].text_frame
+		is_first = True
+		for concursante in concursantes[concursantes["Estado"] == estado].values[:,1]:
+			if is_first:
+				p = tf.paragraphs[0]
+				is_first = False
+			else:
+				p = tf.add_paragraph()
+			p.text = concursante
+
 def add_individual_medals(i: int):
 	i += 1
 	if i >= n_instructions: return None
@@ -116,10 +135,15 @@ def add_individual_medals(i: int):
 	for block in blocks:
 		for j in range(len(block)):
 			medal_slide = prs.slides.add_slide(prs.slide_layouts[8])
+			is_first = True
 			for k in range(len(block)):
 				medal_slide.placeholders[0].text = f"Medallas de {medal}\nNivel {level}".upper()
 				tf = medal_slide.placeholders[2].text_frame
-				p = tf.add_paragraph()
+				if is_first:
+					p = tf.paragraphs[0]
+					is_first = False
+				else:
+					p = tf.add_paragraph()
 				p.text = f"{block[k,3].upper()} ({block[k,0].upper()})"
 				if j==k:
 					p.font.bold = True
@@ -172,6 +196,8 @@ for i in range(n_instructions):
 	if instructions[i][0] == "#": continue # Ignore comments
 	if re.match("title", instructions[i]):
 		add_title_slide()
+	if re.match("parade", instructions[i]):
+		add_parade()
 	if re.match("person", instructions[i]):
 		add_person_slide(i)
 	if re.match("moment", instructions[i]):
