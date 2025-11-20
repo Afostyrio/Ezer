@@ -9,6 +9,8 @@ import numpy
 if os.path.isdir("outputs/Presentación.pptx"):
 	os.remove("outputs/Presentación.pptx")
 
+image_filetypes = ["png", "jpg", "jpeg"]
+
 prs = Presentation("inputs/Plantilla.pptx")
 
 with open("config", 'r') as instruction_file:
@@ -100,7 +102,7 @@ def add_parade():
 
 		tf = state_slide.placeholders[1].text_frame
 		is_first = True
-		for concursante in concursantes[concursantes["Estado"] == estado].values[:,1]:
+		for concursante in concursantes[concursantes["Estado"] == estado]["NOMBRE COMPLETO"].values:
 			if is_first:
 				p = tf.paragraphs[0]
 				is_first = False
@@ -147,8 +149,10 @@ def add_individual_medals(i: int):
 				p.text = f"{block[k,3].upper()} ({block[k,0].upper()})"
 				if j==k:
 					p.font.bold = True
-					picture_placeholder = medal_slide.placeholders[1].insert_picture(f"inputs/img/Individual/{block[k,2]}.png")
-
+					for filetype in image_filetypes:
+						try:
+							picture_placeholder = medal_slide.placeholders[1].insert_picture(f"inputs/img/Individual/{block[k,2]}.{filetype}")
+						except (FileNotFoundError, AttributeError): pass
 
 def add_team_medals(i: int):
 	i += 1
@@ -173,21 +177,33 @@ def add_team_medals(i: int):
 	for team in medallistas_bronce:
 		slide = prs.slides.add_slide(prs.slide_layouts[8])
 		slide.placeholders[0].text = "TERCER LUGAR"
-		slide.placeholders[1].insert_picture(f"inputs/img/Teams/{team[0]}.png")
+		for filetype in image_filetypes:
+			try:
+				slide.placeholders[1].insert_picture(f"inputs/img/Teams/{team[0]}.{filetype}")
+			except (AttributeError, FileNotFoundError):
+				pass
 		slide.placeholders[2].text = team[1]
 
 	medallistas_plata = medallistas_equipos[(medallistas_equipos["Nivel"]==level) & (medallistas_equipos["Medalla"] == "Plata")].values
 	for team in medallistas_plata:
 		slide = prs.slides.add_slide(prs.slide_layouts[8])
 		slide.placeholders[0].text = "SEGUNDO LUGAR"
-		slide.placeholders[1].insert_picture(f"inputs/img/Teams/{team[0]}.png")
+		for filetype in image_filetypes:
+			try:
+				slide.placeholders[1].insert_picture(f"inputs/img/Teams/{team[0]}.{filetype}")
+			except (AttributeError, FileNotFoundError):
+				pass
 		slide.placeholders[2].text = team[1]
 
 	medallistas_oro = medallistas_equipos[(medallistas_equipos["Nivel"]==level) & (medallistas_equipos["Medalla"] == "Oro")].values
 	for team in medallistas_oro:
 		slide = prs.slides.add_slide(prs.slide_layouts[8])
 		slide.placeholders[0].text = "PRIMER LUGAR"
-		slide.placeholders[1].insert_picture(f"inputs/img/Teams/{team[0]}.png")
+		for filetype in image_filetypes:
+			try:
+				slide.placeholders[1].insert_picture(f"inputs/img/Teams/{team[0]}.{filetype}")
+			except (AttributeError, FileNotFoundError):
+				pass
 		slide.placeholders[2].text = team[1]
 		
 
