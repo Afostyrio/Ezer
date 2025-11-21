@@ -1,14 +1,77 @@
 title
+moment:
++ name: Bienvenida
 person:
 + title: Maestra de ceremonias
 + name: M. Isabel de Montserrat Avila Olivo
-+ role: Delegada de Aguascalientes
 + image: inputs/img/Isabel.png
 moment:
-+ name: Bienvenida
++ name: Presídium
+person:
++ title: Presídium
++ name: María de los Ángeles Olvera
++ role: Coordinadora general Casa Córdoba, Filantropía
+person:
++ title: Presídium
++ name: Erika Ortiz
++ role: Alianzas Estratégicas de Fundación Familia Bocar
++ image: inputs/img/Bocar.png
+person:
++ title: Presídium
++ name: Dr. Jesús Rodríguez Viorato
++ role: en representación del Dr. Rafael Herrera Guzmán, director general del Centro de Investigación en Matemáticas, A.C.
++ image: inputs/img/Viorato.jpg
+person:
++ title: Presídium
++ name: Dra. María Guadalupe Russell Noriega
++ role: Presidenta de la Olimpiada Mexicana de Matemáticas
++ image: inputs/img/Lupita.jpg
+person:
++ title: Presídium
++ name: Dr. Luis Eduardo García Hernández 
++ role: Director Académico de la Olimpiada Mexicana de Matemáticas
++ image: inputs/img/Lalo.jpg
+person:
++ title: Presídium
++ name: Isabel Cristina Martínez Álvaro
++ role: Delegada de San Luis Potosí
++ image: inputs/img/Isabel-Cristina.jpg
+person:
++ title: Presídium
++ name: Armando Mata
++ role: Presidente electo periodo 2026-2028 de la Sociedad Matemática Mexicana
++ image: inputs/img/SMM.jpg
+moment:
++ name: Palabras de Bienvenida
+person:
++ title: Presídium
++ name: Dra. María Guadalupe Russell Noriega
++ role: Presidenta de la Olimpiada Mexicana de Matemáticas
++ image: inputs/img/Lupita.jpg
+moment:
++ name: Palabras de agradecimiento de los estudiantes
 parade
 individual:
-+ level: II
++ medal: Mención Honorífica
+moment:
++ name: Galería fotográfica
+individual:
++ medal: Bronce
+person:
++ title: Palabras del CIMAT
++ name: Dr. Jesús Rodríguez Viorato
++ role: en representación del Dr. Rafael Herrera Guzmán, director general del Centro de Investigación en Matemáticas, A.C.
++ image: inputs/img/Viorato.jpg
+individual:
 + medal: Plata
-team:
-+ level: II
+moment:
++ name: Agradecimientos
+person:
++ title: Palabras de nuestros patrocinadores
++ name: Erika Ortiz
++ role: Alianzas Estratégicas de Fundación Familia Bocar
++ image: inputs/img/Bocar.png
+individual:
++ medal: Oro
+moment:
++ name: Preselecciones
